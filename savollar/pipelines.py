@@ -27,7 +27,7 @@ class savollarPipeline(object):
             raise DropItem("Missing %s of blogpost from %s" %(data, item['url']))
         if valid:
           es.index(
-              index="savollar2",
+              index=settings["ELASTICSEARCH_INDEX"],
               doc_type="info",
               id=str(uuid1()),
               body=dict(item)

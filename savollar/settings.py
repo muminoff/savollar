@@ -17,18 +17,8 @@ NEWSPIDER_MODULE = 'savollar.spiders'
 #USER_AGENT = 'savollar (+http://www.yourdomain.com)'
 ITEM_PIPELINES = (
     'savollar.pipelines.savollarPipeline',
-    # 'scrapyelasticsearch.ElasticSearchPipeline',
 )
 
-ONCURRENT_REQUESTS = 1000
+CONCURRENT_REQUESTS = 1000
 ELASTICSEARCH_HOST = "localhost"
-ELASTICSEARCH_PORT = 9200
 ELASTICSEARCH_INDEX = "savollar"
-
-# ELASTICSEARCH_SERVER = 'localhost' # If not 'localhost' prepend 'http://'
-# ELASTICSEARCH_PORT = 9200 # If port 80 leave blank
-# ELASTICSEARCH_USERNAME = ''
-# ELASTICSEARCH_PASSWORD = ''
-# ELASTICSEARCH_INDEX = 'savollar'
-# ELASTICSEARCH_TYPE = 'items'
-# ELASTICSEARCH_UNIQ_KEY = 'url'
