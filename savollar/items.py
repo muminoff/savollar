@@ -9,9 +9,7 @@ import scrapy
 
 
 class SavollarItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
     title = scrapy.Field()
     question = scrapy.Field()
     answer = scrapy.Field()
-    link = scrapy.Field()
+    permalink = scrapy.Field()
