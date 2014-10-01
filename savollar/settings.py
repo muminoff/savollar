@@ -19,6 +19,6 @@ ITEM_PIPELINES = (
     'savollar.pipelines.savollarPipeline',
 )
 
-CONCURRENT_REQUESTS = 1000
+# CONCURRENT_REQUESTS = 1000
 ELASTICSEARCH_HOST = "localhost"
 ELASTICSEARCH_INDEX = "savollar"
