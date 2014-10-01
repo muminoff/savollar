@@ -1,4 +1,4 @@
 savollar
 ========
 
-info.islom.uz web crawler
+savollar.islom.uz web crawler
