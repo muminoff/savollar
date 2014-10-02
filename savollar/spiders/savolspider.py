@@ -4,10 +4,20 @@ from scrapy.http import Request
 from savollar.items import SavolItem
 from datetime import datetime
 
+from scrapy.conf import settings
+from cqlengine.connection import setup
+from cqlengine.management import sync_table
+from savollar.models import SavolModel
+
 
 class SavolSpider(scrapy.Spider):
     name = "savolspider"
     allowed_domains = ["savollar.islom.uz"]
+
+    def __init__(self, category=None, *args, **kwargs):
+        setup(settings["CASSANDRA_CLUSTER"], settings["CASSANDRA_KEYSPACE"])
+        sync_table(SavolModel)
+        super(SavolSpider, self).__init__(*args, **kwargs)
 
     def start_requests(self):
         start_urls = ['http://savollar.islom.uz/page/%s' % i for i in xrange(1000)]

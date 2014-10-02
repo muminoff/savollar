@@ -14,9 +14,13 @@ SPIDER_MODULES = ['savollar.spiders']
 NEWSPIDER_MODULE = 'savollar.spiders'
 
 ITEM_PIPELINES = (
+    'savollar.pipelines.CassandraExportPipleline',
     'savollar.pipelines.ElasticSearchIndexPipeline',
 )
 
-CONCURRENT_REQUESTS = 1
+CONCURRENT_REQUESTS = 16
 ELASTICSEARCH_HOST = "localhost"
 ELASTICSEARCH_INDEX = "savollar"
+
+CASSANDRA_CLUSTER = ["localhost",]
+CASSANDRA_KEYSPACE = "savollar"
