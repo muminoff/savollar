@@ -30,7 +30,10 @@ class SavolspiderSpider(scrapy.Spider):
         hxs = scrapy.Selector(response)
         item = SavollarItem()
         item['title'] = hxs.xpath('//section[@class=\'content\']//h1//text()').extract()[0]
-        item['question'] = hxs.xpath('//section[@class=\'content\']//div[@class=\'entry-inner\']//p//text()').extract()[0]
-        item['answer'] = hxs.xpath('//section[@class=\'content\']//article[@class=\'comment\']//div[@class=\'comment-content\']//text()').extract()[0]
+        item['question'] = '. '.join(t.strip() for t in hxs.xpath(
+            '//section[@class=\'content\']//div[@class=\'entry-inner\']//p//text()'
+        ).extract())
+        item['answer'] = '. '.join(t.strip() for t in hxs.xpath(
+            '//section[@class=\'content\']//article[@class=\'comment\']//div[@class=\'comment-content\']//text()').extract())
         item['permalink'] = response.url
         yield item
