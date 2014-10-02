@@ -8,8 +8,10 @@
 import scrapy
 
 
-class SavollarItem(scrapy.Item):
+class SavolItem(scrapy.Item):
     title = scrapy.Field()
     question = scrapy.Field()
     answer = scrapy.Field()
+    author = scrapy.Field()
     permalink = scrapy.Field()
+    date = scrapy.Field()

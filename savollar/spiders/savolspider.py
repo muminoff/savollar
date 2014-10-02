@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.http import Request
-from savollar.items import SavollarItem
+from savollar.items import SavolItem
 
 
-class SavolspiderSpider(scrapy.Spider):
+class SavolSpider(scrapy.Spider):
     name = "savolspider"
     allowed_domains = ["savollar.islom.uz"]
 
@@ -21,7 +21,7 @@ class SavolspiderSpider(scrapy.Spider):
 
     def get_answer(self, response):
         hxs = scrapy.Selector(response)
-        item = SavollarItem()
+        item = SavolItem()
         item['title'] = hxs.xpath('//section[@class=\'content\']//h1//text()').extract()[0]
         item['question'] = '. '.join(t.strip() for t in hxs.xpath(
             '//section[@class=\'content\']//div[@class=\'entry-inner\']//p//text()'

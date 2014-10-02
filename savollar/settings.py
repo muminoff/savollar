@@ -13,12 +13,10 @@ BOT_NAME = 'savollar'
 SPIDER_MODULES = ['savollar.spiders']
 NEWSPIDER_MODULE = 'savollar.spiders'
 
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'savollar (+http://www.yourdomain.com)'
 ITEM_PIPELINES = (
-    'savollar.pipelines.savollarPipeline',
+    'savollar.pipelines.ElasticSearchIndexPipeline',
 )
 
-# CONCURRENT_REQUESTS = 1000
+CONCURRENT_REQUESTS = 16
 ELASTICSEARCH_HOST = "localhost"
 ELASTICSEARCH_INDEX = "savollar"
