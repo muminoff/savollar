@@ -38,7 +38,7 @@ class ElasticSearchIndexPipeline(object):
 
 class CassandraExportPipleline(object):
     def process_item(self, item, spider):
-        setup(settings["CASSANDRA_CLUSTER"], settings["CASSANDRA_KEYSPACE"])
+        # setup(settings["CASSANDRA_CLUSTER"], settings["CASSANDRA_KEYSPACE"])
         valid = True
         for data in item:
             if not data:
