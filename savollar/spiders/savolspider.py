@@ -17,9 +17,9 @@ class SavolspiderSpider(scrapy.Spider):
         questions = hxs.xpath('//h2[@class=\'post-title\']')
         for q in questions:
             link  = q.xpath('a/@href').extract()[0]
-            yield Request(url=link, callback=self.getAnswer)
+            yield Request(url=link, callback=self.get_answer)
 
-    def getAnswer(self, response):
+    def get_answer(self, response):
         hxs = scrapy.Selector(response)
         item = SavollarItem()
         item['title'] = hxs.xpath('//section[@class=\'content\']//h1//text()').extract()[0]
