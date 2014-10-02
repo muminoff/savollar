@@ -17,6 +17,6 @@ ITEM_PIPELINES = (
     'savollar.pipelines.ElasticSearchIndexPipeline',
 )
 
-CONCURRENT_REQUESTS = 16
+CONCURRENT_REQUESTS = 1
 ELASTICSEARCH_HOST = "localhost"
 ELASTICSEARCH_INDEX = "savollar"

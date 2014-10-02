@@ -28,5 +28,7 @@ class SavolSpider(scrapy.Spider):
         ).extract())
         item['answer'] = '. '.join(t.strip() for t in hxs.xpath(
             '//section[@class=\'content\']//article[@class=\'comment\']//div[@class=\'comment-content\']//text()').extract())
+        item['author'] = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//a/text()').extract()[0].strip()
         item['permalink'] = response.url
+        item['date'] = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//text()').extract()[1][3:]
         yield item
