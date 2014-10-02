@@ -2,6 +2,7 @@
 import scrapy
 from scrapy.http import Request
 from savollar.items import SavolItem
+from datetime import datetime
 
 
 class SavolSpider(scrapy.Spider):
@@ -30,5 +31,6 @@ class SavolSpider(scrapy.Spider):
             '//section[@class=\'content\']//article[@class=\'comment\']//div[@class=\'comment-content\']//text()').extract())
         item['author'] = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//a/text()').extract()[0].strip()
         item['permalink'] = response.url
-        item['date'] = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//text()').extract()[1][3:]
+        date_string = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//text()').extract()[1][3:]
+        item['date'] = datetime.strptime(date_string, "%d/%m/%Y")
         yield item
