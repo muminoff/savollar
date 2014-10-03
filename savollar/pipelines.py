@@ -49,7 +49,9 @@ class CassandraExportPipleline(object):
             model.answer = item["answer"]
             model.author = item["author"]
             model.permalink = item["permalink"]
-            model.date = item["date"]
+            model.year = int(item["year"])
+            model.month = int(item["month"])
+            model.date = int(item["date"])
             model.tags = item["title"].split()
             model.save()
             log.msg("Item exported to Cassandra database %s/%s" %

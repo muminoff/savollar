@@ -14,4 +14,6 @@ class SavolItem(scrapy.Item):
     answer = scrapy.Field()
     author = scrapy.Field()
     permalink = scrapy.Field()
+    year = scrapy.Field()
+    month = scrapy.Field()
     date = scrapy.Field()

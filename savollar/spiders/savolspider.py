@@ -42,5 +42,5 @@ class SavolSpider(scrapy.Spider):
         item['author'] = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//a/text()').extract()[0].strip()
         item['permalink'] = response.url
         date_string = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//text()').extract()[1][3:]
-        item['date'] = datetime.strptime(date_string, "%d/%m/%Y")
+        item['date'], item['month'], item['year'] = date_string.split('/')
         yield item

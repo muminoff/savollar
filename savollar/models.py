@@ -28,9 +28,18 @@ class SavolModel(Model):
 
     permalink = columns.Text()
 
-    date = columns.DateTime(
-        primary_key=True,
-        clustering_order="DESC",
+    year = columns.Integer(
+        primary_key = True,
+        index=True
+    )
+
+    month = columns.Integer(
+        primary_key = True,
+        index=True
+    )
+
+    date = columns.Integer(
+        primary_key = True,
         index=True
     )
 
