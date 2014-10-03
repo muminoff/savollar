@@ -9,7 +9,6 @@ from scrapy.conf import settings
 from scrapy import log
 from elasticsearch import Elasticsearch
 from uuid import uuid1
-from cqlengine.connection import setup
 from savollar.models import SavolModel
 
 
@@ -38,7 +37,6 @@ class ElasticSearchIndexPipeline(object):
 
 class CassandraExportPipleline(object):
     def process_item(self, item, spider):
-        # setup(settings["CASSANDRA_CLUSTER"], settings["CASSANDRA_KEYSPACE"])
         valid = True
         for data in item:
             if not data:
