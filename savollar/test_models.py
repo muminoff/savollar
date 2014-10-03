@@ -6,8 +6,15 @@ from models import SavolModel
 
 def main():
     setup(settings["CASSANDRA_CLUSTER"], settings["CASSANDRA_KEYSPACE"])
-    model = SavolModel.objects.all()[0]
-    print model.savol_id
+    print "Gettings first 10 models from DB:"
+    for model in SavolModel.objects.all()[:10]:
+        print model.savol_id
+        print "---------------------"
+        print model.title
+        print model.question
+        print model.answer
+        print model.date
+        print "---------------------" 
 
 
 if __name__ == '__main__':
