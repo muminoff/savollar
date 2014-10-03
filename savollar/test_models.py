@@ -14,9 +14,9 @@ def main():
         print model.question
         print model.answer
         print "{year}/{month}/{date}".format(
-            model.year,
-            model.month,
-            model.date
+            year=model.year,
+            month=model.month,
+            date=model.date
         )
         print "---------------------" 
 
