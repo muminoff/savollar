@@ -13,11 +13,12 @@ def main():
         print model.title
         print model.question
         print model.answer
-        print "{year}/{month}/{date}".format(
-            year=model.year,
-            month=model.month,
-            date=model.date
-        )
+        print model.year
+        # print "{year}/{month}/{date}".format(
+        #     year=model.year,
+        #     month=model.month,
+        #     date=model.date
+        # )
         print "---------------------" 
 
 
