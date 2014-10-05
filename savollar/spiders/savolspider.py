@@ -33,14 +33,22 @@ class SavolSpider(scrapy.Spider):
     def get_answer(self, response):
         hxs = scrapy.Selector(response)
         item = SavolItem()
-        item['title'] = hxs.xpath('//section[@class=\'content\']//h1//text()').extract()[0]
-        item['question'] = '. '.join(t.strip() for t in hxs.xpath(
-            '//section[@class=\'content\']//div[@class=\'entry-inner\']//p//text()'
-        ).extract())
-        item['answer'] = '. '.join(t.strip() for t in hxs.xpath(
-            '//section[@class=\'content\']//article[@class=\'comment\']//div[@class=\'comment-content\']//text()').extract())
-        item['author'] = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//a/text()').extract()[0].strip()
+        item['title'] = hxs.xpath(
+            '//section[@class=\'content\']//h1//text()'
+        ).extract()[0]
+        item['question'] = '. '.join(
+            t.strip() for t in hxs.xpath(
+                '//section[@class=\'content\']//div[@class=\'entry-inner\']//p//text()'
+            ).extract())
+        item['answer'] = '. '.join(
+            t.strip() for t in hxs.xpath(
+                '//section[@class=\'content\']//article[@class=\'comment\']//div[@class=\'comment-content\']//text()').extract())
+        item['author'] = hxs.xpath(
+            '//section[@class=\'content\']//p[@class=\'post-byline\']//a/text()'
+        ).extract()[0].strip()
         item['permalink'] = response.url
-        date_string = hxs.xpath('//section[@class=\'content\']//p[@class=\'post-byline\']//text()').extract()[1][3:]
+        date_string = hxs.xpath(
+            '//section[@class=\'content\']//p[@class=\'post-byline\']//text()'
+        ).extract()[1][3:]
         item['date'], item['month'], item['year'] = date_string.split('/')
         yield item
